@@ -1,16 +1,11 @@
-export const useForm = () => {
-  const [formState, setformState] = useState({
-    userName: "",
-    email: "",
-    password: "",
-  });
+import { useState } from "react";
+export const useForm = (inicialForm = {}) => {
+  const [formState, setformState] = useState(inicialForm);
 
-  const { userName, email, password } = formState;
-
-  const onInputChange = ({ target }) => {
+  const onImputChange = ({ target }) => {
     const { name, value } = target;
     setformState({ ...formState, [name]: value });
   };
 
-  return { formState, onInputChange };
+  return { ...formState, formState, onImputChange };
 };
